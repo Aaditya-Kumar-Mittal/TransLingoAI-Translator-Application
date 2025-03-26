@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
+    android:backgroundTint="@color/white"
     tools:context=".CustomSplashScreen1">
 
     <androidx.cardview.widget.CardView
@@ -29,7 +30,7 @@
                 android:fontFamily="@font/borel"
                 android:text="TranslingoAI"
                 android:textColor="@color/blue_900"
-                android:textSize="45sp"
+                android:textSize="35sp"
                 android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

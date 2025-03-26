@@ -17,6 +17,9 @@
       <SelectionState runConfigName="CustomSplashScreen1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="VoiceTranslator">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
