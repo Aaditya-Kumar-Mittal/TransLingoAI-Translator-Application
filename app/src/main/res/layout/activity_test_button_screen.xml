@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sky_300"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".TestButtonScreen">
+
+    <Button
+        android:id="@+id/onlyEnglishToHindi1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/red_500"
+        android:text="English To Hindi Translation"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/anyToHindi1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/red_500"
+        android:text="Any Language To Hindi Translation"
+        android:textSize="22sp" />
+
+</LinearLayout>
