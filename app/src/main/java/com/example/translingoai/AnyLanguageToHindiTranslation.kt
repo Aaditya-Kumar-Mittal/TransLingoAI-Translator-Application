@@ -10,39 +10,26 @@ import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 
 class AnyLanguageToHindiTranslation : AppCompatActivity() {
+
     lateinit var fromLanguage: Spinner
-    lateinit var toLanguage: Spinner
     lateinit var translateText: EditText
-    lateinit var translatedText1: TextView
+    lateinit var translatedText: TextView
     lateinit var translateButton: Button
 
-    private val items = arrayOf("English", "Hindi", "Bengali", "Marathi", "Urdu")
-    private var selectedFromLanguage = ""
-    private var selectedToLanguage = ""
+    private val items = arrayOf("English", "Bengali", "Marathi", "Urdu")
+    private var selectedFromLanguage = "English" // Default Language
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_any_language_to_hindi_translation)
 
-        translateText = findViewById(R.id.textToTranslate)
-        fromLanguage = findViewById(R.id.fromLanguages)
-        toLanguage = findViewById(R.id.toLanguages)
-        translatedText1 = findViewById(R.id.translatedText)
-        translateButton = findViewById(R.id.translateButton)
+        translateText = findViewById(R.id.textToTranslate2)
+        fromLanguage = findViewById(R.id.fromLanguagesList1)
+        translatedText = findViewById(R.id.translatedTexttoHindi1)
+        translateButton = findViewById(R.id.translateButton2)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, items)
         fromLanguage.adapter = adapter
-        toLanguage.adapter = adapter
-
-        translateButton.setOnClickListener {
-            if (translateText.text.toString().isEmpty()) {
-                Toast.makeText(this, "Enter text to translate", Toast.LENGTH_SHORT).show()
-            } else if (selectedFromLanguage == selectedToLanguage) {
-                Toast.makeText(this, "Choose different languages!", Toast.LENGTH_SHORT).show()
-            } else {
-                translateLanguage()
-            }
-        }
 
         fromLanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -52,50 +39,43 @@ class AnyLanguageToHindiTranslation : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        toLanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                selectedToLanguage = items[position].toLowerCase()
+        translateButton.setOnClickListener {
+            if (translateText.text.toString().isEmpty()) {
+                Toast.makeText(this, "Enter text to translate", Toast.LENGTH_SHORT).show()
+            } else {
+                translateLanguage()
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
 
     private fun translateLanguage() {
         val options = TranslatorOptions.Builder()
             .setSourceLanguage(selectFrom())
-            .setTargetLanguage(selectTo())
+            .setTargetLanguage(TranslateLanguage.HINDI) // Always translate to Hindi
             .build()
+
         val translator = Translation.getClient(options)
 
-        translator.downloadModelIfNeeded().addOnSuccessListener {
-            translator.translate(translateText.text.toString()).addOnSuccessListener {
-                translatedText1.text = it
-            }.addOnFailureListener { exception ->
-                Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
+        translator.downloadModelIfNeeded(DownloadConditions.Builder().build())
+            .addOnSuccessListener {
+                translator.translate(translateText.text.toString())
+                    .addOnSuccessListener { translatedText.text = it }
+                    .addOnFailureListener { exception ->
+                        Toast.makeText(this, "Translation failed: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    }
             }
-        }
+            .addOnFailureListener {
+                Toast.makeText(this, "Model download failed. Check internet connection.", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun selectFrom(): String {
         return when (selectedFromLanguage) {
             "english" -> TranslateLanguage.ENGLISH
-            "hindi" -> TranslateLanguage.HINDI
             "bengali" -> TranslateLanguage.BENGALI
             "marathi" -> TranslateLanguage.MARATHI
             "urdu" -> TranslateLanguage.URDU
             else -> TranslateLanguage.ENGLISH // Default to English
-        }
-    }
-
-    private fun selectTo(): String {
-        return when (selectedToLanguage) {
-            "english" -> TranslateLanguage.ENGLISH
-            "hindi" -> TranslateLanguage.HINDI
-            "bengali" -> TranslateLanguage.BENGALI
-            "marathi" -> TranslateLanguage.MARATHI
-            "urdu" -> TranslateLanguage.URDU
-            else -> TranslateLanguage.HINDI // Default to Hindi
         }
     }
 }
