@@ -27,5 +27,11 @@ class TestButtonScreen : AppCompatActivity() {
             val intent = Intent(this, AnyLanguageToHindiTranslation::class.java)
             startActivity(intent)
         }
+
+        binding.voiceTranslation1.setOnClickListener {
+            val intent = Intent(this, VoiceTranslator::class.java)
+            startActivity(intent)
+        }
+
     }
 }
