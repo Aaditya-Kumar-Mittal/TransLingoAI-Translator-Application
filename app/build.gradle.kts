@@ -23,6 +23,11 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -44,5 +49,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Dependency for ML Kit Translate Dependency of the Google Translate API
-    implementation("com.google.mlkit:translate:17.0.3")
+    implementation(libs.translate)
+    implementation (libs.easy.translator)
 }
