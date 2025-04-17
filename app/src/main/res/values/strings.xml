@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TranslingoAI</string>
+    <string name="vision">From one language to another</string>
 </resources>

@@ -1,7 +1,14 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.TransLingoAI" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.TransLingoAI" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Dynamic Color Off for now -->
+        <item name="android:statusBarColor">@color/blue_500</item>
+        <item name="android:navigationBarColor">@color/blue_500</item>
+
+        <!-- Optional: Toolbar / UI Colors -->
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorSecondary">@color/blue_500</item>
+        <item name="colorSurface">@color/blue_50</item>
+        <item name="colorOnPrimary">@android:color/white</item>
     </style>
 </resources>

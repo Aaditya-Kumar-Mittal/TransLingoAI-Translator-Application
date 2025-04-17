@@ -2,5 +2,6 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/borel</item>
+        <item>@font/calistoga</item>
     </array>
 </resources>

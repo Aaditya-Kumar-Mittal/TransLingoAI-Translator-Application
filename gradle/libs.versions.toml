@@ -12,6 +12,12 @@ activity = "1.10.1"
 constraintlayout = "2.2.1"
 translate = "17.0.3"
 
+# ✅ Added new versions
+room = "2.6.1"
+lifecycle = "2.7.0"
+kotlinx-coroutines = "1.8.1"
+recyclerview = "1.4.0-alpha01"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 easy-translator = { module = "com.github.developwithishfaq:easy-translator", version.ref = "easyTranslator" }
@@ -24,7 +30,21 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 translate = { module = "com.google.mlkit:translate", version.ref = "translate" }
 
+# ✅ Room dependencies
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+# ✅ Lifecycle components
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+
+# ✅ Kotlin Coroutines
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+
+# ✅ RecyclerView
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-

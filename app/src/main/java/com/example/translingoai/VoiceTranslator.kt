@@ -6,13 +6,19 @@ import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
-import java.util.*
+import java.util.Locale
 
 class VoiceTranslator : AppCompatActivity(), TextToSpeech.OnInitListener {
 
@@ -48,7 +54,8 @@ class VoiceTranslator : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         tts = TextToSpeech(this, this)
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, languages.keys.toList())
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, languages.keys.toList())
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         fromLanguage.adapter = adapter
         toLanguage.adapter = adapter
 
@@ -56,6 +63,7 @@ class VoiceTranslator : AppCompatActivity(), TextToSpeech.OnInitListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 selectedFromLanguage = languages[adapter.getItem(position)] ?: TranslateLanguage.ENGLISH
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
@@ -63,6 +71,7 @@ class VoiceTranslator : AppCompatActivity(), TextToSpeech.OnInitListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 selectedToLanguage = languages[adapter.getItem(position)] ?: TranslateLanguage.HINDI
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
